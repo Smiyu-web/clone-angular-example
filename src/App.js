@@ -1,23 +1,22 @@
-import logo from './logo.svg';
-import './App.css';
+import "./index.css";
+import { useState } from "react";
+import NavBar from "./components/navbar/NavBar";
+import SearchField from "./components/searchField/SearchField";
+import AddModal from "./components/modal/AddModal";
+import DataTable from "./components/table/DataTable";
+
+import EditModal from "./components/modal/EditModal";
 
 function App() {
+  const [doReload, setDoReload] = useState(false);
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <NavBar reload={setDoReload} />
+      <SearchField />
+      <DataTable doReload={doReload} setDoReload={setDoReload} />
+      <AddModal />
+      <EditModal />
     </div>
   );
 }
